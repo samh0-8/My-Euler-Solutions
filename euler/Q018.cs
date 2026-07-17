@@ -35,36 +35,53 @@ namespace euler
             int position_of_previous_largest_2 = 0;
             int k = 1;
 
-            Random rnd = new Random();
+            
             while (true)
             {
+                Random rnd = new Random();
                 for (int i = 0; i < 15; i++)
                 {
-                    for (int j = 0; j < k; j++) // could make faster by j = positon of previous largest.
+                    for (int j = 0; j < k; j++) // could make faster by j = position of previous largest.
                     {
-                        Console.WriteLine(i);
                         if (j == position_of_previous_largest_1 || j == position_of_previous_largest_1 + 1)
                         {
-                            int multiplier = rnd.Next(1, 7);
+                            int multiplier = rnd.Next(1, 100);
                             current_rnd_line = (triangle[i][j]) * multiplier;
                             if (current_rnd_line >= current_rnd_line_max)
                             {
                                 current_line_max = triangle[i][j];
                                 position_of_previous_largest_2 = j;
+                                current_rnd_line_max = current_rnd_line;
                             }
                         }
-                        max = max + current_line_max;
-                        k++;
-                        current_line_max = 0;
-                        position_of_previous_largest_1 = position_of_previous_largest_2;
                     }
-                    if (max  > highest_max) 
-                    {  highest_max = max;
-                        Console.WriteLine(highest_max);
-                    }
+                    max = max + current_line_max;
+                    k++;
+                    current_line_max = 0;
+                    current_rnd_line_max = 0;
+                    position_of_previous_largest_1 = position_of_previous_largest_2;
                 }
+                if (max > highest_max)
+                {
+                    highest_max = max;
+                    Console.WriteLine(highest_max);
+                }
+                k = 1;
+                max = 0;
+                current_line_max = 0;
+                current_rnd_line = 0;
+                current_rnd_line_max = 0;
+                position_of_previous_largest_1 = 0;
+                position_of_previous_largest_2 = 0;
+    
+ 
             }
+
+
+
+
+
             //1313 is the largest ignoring every other req.
         }
-    }
+    } // this looks horrible, but its basically choosing a completely random path each time to go down, and noting the current maximum, works if not many rows but wont work for problem 67.
 }

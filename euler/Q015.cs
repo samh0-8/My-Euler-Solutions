@@ -6,5 +6,9 @@ namespace euler
 {
     internal class Q015
     {
+        public void Q015_Solve()
+        {
+
+        }
     }
 }
