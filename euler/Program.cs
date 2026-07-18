@@ -8,8 +8,8 @@ namespace euler
     {
         static void Main(string[] args)
         {
-            Q018 q1 = new Q018();
-            q1.Q018_Solve();
+            Q021 q1 = new Q021();
+            q1.Q021_Solve();
         }
     }
 }
